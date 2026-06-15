@@ -1,0 +1,21 @@
+{
+  "name": "web-environment-society-agriculture",
+  "version": "1.0.0",
+  "description": "Trang web về Môi trường, Xã hội và Nông nghiệp",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "environment",
+    "agriculture",
+    "society",
+    "climate"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.22.2"
+  }
+}

@@ -55,9 +55,6 @@ function renderFooter() {
   if (footer) {
     footer.innerHTML = `
       ${footerTags.map(tag => `<span><i class="fas fa-leaf"></i> ${tag}</span>`).join('')}
-      <div style="width:100%; margin-top: 0.5rem;">
-        <p>⭐ Giao diện tab lồng ghép – trực quan, dễ dàng khám phá từng chủ đề chuyên sâu ⭐</p>
-      </div>
     `;
   }
 }

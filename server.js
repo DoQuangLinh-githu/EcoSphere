@@ -9,10 +9,15 @@ app.use((req, res, next) => {
     next();
 });
 
-// Serve static files từ thư mục public
+// ✅ QUAN TRỌNG: Serve static files từ thư mục public
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ✅ QUAN TRỌNG: Không dùng app.get('*'), dùng middleware fallback
+// ✅ Đảm bảo các file trong public được serve đúng đường dẫn
+app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
+app.use('/js', express.static(path.join(__dirname, 'public', 'js')));
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
+
+// Fallback middleware - gửi index.html
 app.use((req, res, next) => {
     // Nếu request là file static, bỏ qua
     if (req.path.match(/\.(css|js|png|jpg|jpeg|gif|svg|ico|json|woff|woff2|ttf|eot)$/)) {

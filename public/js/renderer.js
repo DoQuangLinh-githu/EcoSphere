@@ -1,60 +1,50 @@
-function createCard(card) {
-  return `
-    <div class="feature-card">
-      <h3 style="border-left-color: ${card.borderColor};"><i class="${card.icon}"></i> ${card.title}</h3>
-      <p>${card.content}</p>
-      ${card.badge ? `<div class="badge-sm"><i class="fas fa-tag"></i> ${card.badge}</div>` : ''}
-    </div>
-  `;
-}
+// =============================================
+// RENDERER CHÍNH - Chỉ điều phối các renderer con
+// =============================================
 
-function renderCards(cards) {
-  return `<div class="info-grid">${cards.map(card => createCard(card)).join('')}</div>`;
-}
-
-function renderEnvironment() {
-  const subtabs = ['climate', 'ghg', 'modeling', 'gisdb'];
-  subtabs.forEach(tab => {
-    const data = environmentData[tab];
-    const container = document.getElementById(`sub-${tab}`);
-    if (container && data) {
-      container.innerHTML = `${renderCards(data.cards)}<div class="highlight-block"><i class="fas fa-chart-network"></i> <strong>${data.highlight}</strong></div>`;
-    }
-  });
-}
-
-function renderSociety() {
-  const container = document.getElementById('primary-society');
-  if (container) {
-    container.innerHTML = `
-      <h2 style="display: flex; gap: 0.8rem; margin-bottom: 1rem;">
-        <i class="${societyData.icon}" style="color:${societyData.iconColor};"></i> 
-        ${societyData.title}
-      </h2>
-      ${renderCards(societyData.cards)}
-      <div class="highlight-block"><i class="fas fa-chart-line"></i> <strong>Liên kết xã hội - môi trường:</strong> ${societyData.highlight}</div>
+// ===== HERO CHUNG =====
+function updateHero(title, subtitle, logo = null, style = 'default') {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  
+  // Xóa class cũ
+  hero.className = 'hero';
+  
+  // Thêm class theo style
+  if (style === 'environment') hero.classList.add('hero-environment');
+  else if (style === 'society') hero.classList.add('hero-society');
+  else if (style === 'agriculture') hero.classList.add('hero-agriculture');
+  
+  if (logo) {
+    hero.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+        <img src="${logo}" alt="Logo" style="width: 70px; height: 70px; object-fit: contain; border-radius: 15px; background: white; padding: 5px;">
+        <div>
+          <h1><i class="fas fa-charging-station"></i> ${title}</h1>
+          <p>${subtitle}</p>
+        </div>
+      </div>
+    `;
+  } else {
+    hero.innerHTML = `
+      <h1><i class="fas fa-charging-station"></i> ${title}</h1>
+      <p>${subtitle}</p>
     `;
   }
 }
 
-function renderAgriculture() {
-  const highTechContainer = document.getElementById('sub-hightech');
-  const productionContainer = document.getElementById('sub-production');
-  
-  if (highTechContainer) {
-    highTechContainer.innerHTML = `${renderCards(agricultureData.highTech.cards)}<div class="highlight-block"><i class="fas fa-chart-line"></i> <strong>Lợi ích kép:</strong> ${agricultureData.highTech.highlight}</div>`;
-  }
-  
-  if (productionContainer) {
-    productionContainer.innerHTML = `${renderCards(agricultureData.production.cards)}<div class="highlight-block"><i class="fas fa-charging-station"></i> <strong>Sản xuất nông nghiệp thích ứng:</strong> ${agricultureData.production.highlight}</div>`;
-  }
-}
-
+// ===== FOOTER =====
 function renderFooter() {
   const footer = document.querySelector('.footer-note');
-  if (footer) {
-    footer.innerHTML = `
-      ${footerTags.map(tag => `<span><i class="fas fa-leaf"></i> ${tag}</span>`).join('')}
-    `;
+  if (footer && typeof footerTags !== 'undefined') {
+    footer.innerHTML = footerTags.map(tag => `<span><i class="fas fa-leaf"></i> ${tag}</span>`).join('');
   }
 }
+
+// =============================================
+// LƯU Ý: Các hàm render của từng lĩnh vực
+// được định nghĩa trong các file riêng:
+// - environmentRenderer.js: renderEnvironmentContent()
+// - societyRenderer.js: renderSocietyContent()
+// - agricultureRenderer.js: renderHighTechContent(), renderProductionContent()
+// =============================================

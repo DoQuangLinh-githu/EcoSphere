@@ -1,21 +1,13 @@
 {
-  "name": "web-environment-society-agriculture",
+  "name": "ecosphere",
   "version": "1.0.0",
-  "description": "Trang web về Môi trường, Xã hội và Nông nghiệp",
+  "description": "Trang web về Môi trường, Xã hội và Nông nghiệp - EcoSphere",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
   },
-  "keywords": [
-    "environment",
-    "agriculture",
-    "society",
-    "climate"
-  ],
+  "keywords": ["environment", "agriculture", "society", "climate", "gis"],
   "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.22.2"
-  }
+  "license": "MIT"
 }

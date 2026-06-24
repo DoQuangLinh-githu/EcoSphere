@@ -1,0 +1,337 @@
+/* =============================================
+   PHONG CÁCH NÔNG NGHIỆP - Ấm áp, truyền thống
+   ============================================= */
+
+/* Hero Agriculture */
+.hero-agriculture {
+  background: linear-gradient(135deg, #3e2723 0%, #5d4037 40%, #795548 100%);
+  border-left: 6px solid #ff8a65;
+}
+
+/* Section Agriculture */
+.agri-section {
+  padding: 0.5rem 0;
+}
+
+.agri-section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #3e2723;
+  padding-bottom: 0.8rem;
+  border-bottom: 3px solid #ff8a65;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.agri-page-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 2px solid #d7ccc8;
+  margin-bottom: 1.5rem;
+}
+
+.agri-page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3e2723;
+  margin: 0;
+}
+
+/* List Agriculture */
+.agri-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin: 1rem 0;
+}
+
+/* Card Agriculture */
+.agri-card {
+  background: #faf7f5;
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  border: 1px solid #d7ccc8;
+  transition: all 0.3s ease;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.agri-card:hover {
+  transform: translateX(6px);
+  box-shadow: 0 6px 25px rgba(62, 39, 35, 0.08);
+  border-color: #ff8a65;
+}
+
+.agri-card-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  background: #efe5e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #5d4037;
+  transition: all 0.3s ease;
+}
+
+.agri-card:hover .agri-card-icon {
+  background: #5d4037;
+  color: white;
+  transform: scale(1.05) rotate(-5deg);
+}
+
+.agri-card-content {
+  flex: 1;
+}
+
+.agri-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #3e2723;
+  margin: 0 0 0.4rem 0;
+}
+
+.agri-card-text {
+  font-size: 0.92rem;
+  color: #5a4a4a;
+  line-height: 1.7;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.agri-badge {
+  display: inline-block;
+  margin-top: 0.6rem;
+  background: #5d4037;
+  color: white;
+  padding: 0.2rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.agri-highlight {
+  background: #f5edea;
+  border-radius: 12px;
+  padding: 1.2rem 1.8rem;
+  margin-top: 1.5rem;
+  border-left: 5px solid #ff8a65;
+  font-size: 0.95rem;
+  color: #3e2723;
+}
+
+.agri-empty {
+  color: #8a7a7a;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* ===== STYLE CHO 1 ẢNH ===== */
+.agri-card-image-wrapper {
+  margin-top: 0.8rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #d7ccc8;
+  background: #f5f0ed;
+  max-width: 650px;
+}
+
+.agri-card-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 2px 8px rgba(62, 39, 35, 0.06);
+}
+
+.agri-card-image-caption {
+  font-size: 0.75rem;
+  color: #8a7a7a;
+  padding: 0.4rem 1rem;
+  background: #f5f0ed;
+  border-top: 1px solid #d7ccc8;
+  text-align: center;
+  font-style: italic;
+}
+
+.agri-card:hover .agri-card-image {
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.12);
+  transition: box-shadow 0.3s ease;
+}
+
+/* ===== STYLE CHO 2 ẢNH (Grid) ===== */
+.agri-card-images-wrapper {
+  margin-top: 0.8rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #d7ccc8;
+  background: #f5f0ed;
+  max-width: 100%;
+}
+
+.agri-card-images-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #f5f0ed;
+}
+
+.agri-card-image-item {
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  border: 1px solid #e8e0da;
+  transition: all 0.3s ease;
+}
+
+.agri-card-image-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.15);
+  z-index: 2;
+}
+
+.agri-card-image-item .agri-card-image {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== CHÚ THÍCH CHUNG CHO ẢNH ===== */
+.agri-card-image-caption {
+  font-size: 0.75rem;
+  color: #8a7a7a;
+  padding: 0.5rem 1rem;
+  background: #f5f0ed;
+  border-top: 1px solid #d7ccc8;
+  text-align: center;
+  font-style: italic;
+}
+
+.agri-card:hover .agri-card-image-item {
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.15);
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .agri-card-images-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .agri-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .agri-section-title {
+    font-size: 1.3rem;
+  }
+  
+  .agri-page-title {
+    font-size: 1.4rem;
+  }
+  
+  .agri-page-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .agri-card-image-wrapper {
+    max-width: 100%;
+  }
+  
+  .agri-card-images-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
+  .agri-card-image-item:hover {
+    transform: scale(1.01);
+  }
+}
+
+/* Mobile nhỏ */
+@media (max-width: 480px) {
+  .agri-card {
+    padding: 1rem;
+  }
+  
+  .agri-card-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+  
+  .agri-card-title {
+    font-size: 1rem;
+  }
+  
+  .agri-card-text {
+    font-size: 0.85rem;
+  }
+  
+  .agri-section-title {
+    font-size: 1.1rem;
+  }
+  
+  .agri-page-title {
+    font-size: 1.2rem;
+  }
+  
+  .agri-highlight {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .agri-card-images-grid {
+    padding: 0.3rem;
+    gap: 0.5rem;
+  }
+  
+  .agri-card-image-caption {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/* ===== HOVER EFFECTS ===== */
+.agri-card:hover .agri-card-images-grid {
+  box-shadow: 0 2px 12px rgba(62, 39, 35, 0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+/* ===== SCROLLBAR TÙY CHỌN ===== */
+.agri-card-images-wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.agri-card-images-wrapper::-webkit-scrollbar-track {
+  background: #f5f0ed;
+}
+
+.agri-card-images-wrapper::-webkit-scrollbar-thumb {
+  background: #d7ccc8;
+  border-radius: 4px;
+}
+
+.agri-card-images-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #bfb0a8;
+}

@@ -1,57 +1,181 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Hệ sinh thái tri thức | Môi trường - Xã hội - Nông nghiệp</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 EcoSphere - Hệ sinh thái tri thức</title>
+    
+    <!-- ========================================= -->
+    <!-- CSS CHUNG                                  -->
+    <!-- ========================================= -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- ========================================= -->
+    <!-- CSS RIÊNG TỪNG LĨNH VỰC                   -->
+    <!-- ========================================= -->
+    <!-- 🌿 Môi trường - Phong cách xanh lá        -->
+    <link rel="stylesheet" href="/js/data/environment/environment.css">
+    <!-- 👥 Xã hội - Phong cách xanh dương         -->
+    <link rel="stylesheet" href="/js/data/society/society.css">
+    <!-- 🌾 Nông nghiệp - Phong cách nâu ấm        -->
+    <link rel="stylesheet" href="/js/data/agriculture/agriculture.css">
+    
+    <!-- ========================================= -->
+    <!-- FONT AWESOME - Icon                       -->
+    <!-- ========================================= -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<div class="main-container">
-  <div class="hero">
-    <h1><i class="fas fa-charging-station"></i> Môi trường · Xã hội · Nông nghiệp</h1>
-    <p>Hệ thống tab động: khám phá chi tiết về Biến đổi khí hậu, Khí nhà kính, Mô hình hóa, GIS & CSDL, cùng Công nghệ cao và Sản xuất nông nghiệp</p>
-  </div>
 
-  <div class="primary-tabs">
-    <button class="primary-tab active-primary" data-primary="env"><i class="fas fa-leaf"></i> Môi trường</button>
-    <button class="primary-tab" data-primary="society"><i class="fas fa-hand-holding-heart"></i> Xã hội</button>
-    <button class="primary-tab" data-primary="agri"><i class="fas fa-tractor"></i> Nông nghiệp</button>
-  </div>
+    <!-- ========================================= -->
+    <!-- WRAPPER CHÍNH                            -->
+    <!-- ========================================= -->
+    <div class="app-container">
 
-  <div class="primary-content">
-    <div class="primary-pane active-primary-pane" id="primary-env">
-      <div class="sub-tab-bar">
-        <button class="sub-tab-btn active-sub" data-sub="climate"><i class="fas fa-temperature-high"></i> Biến đổi khí hậu</button>
-        <button class="sub-tab-btn" data-sub="ghg"><i class="fas fa-smog"></i> Khí nhà kính</button>
-        <button class="sub-tab-btn" data-sub="modeling"><i class="fas fa-chart-line"></i> Mô hình hóa</button>
-        <button class="sub-tab-btn" data-sub="gisdb"><i class="fas fa-database"></i> Cơ sở dữ liệu & GIS</button>
-      </div>
-      <div id="sub-climate" class="sub-pane active-sub-pane"></div>
-      <div id="sub-ghg" class="sub-pane"></div>
-      <div id="sub-modeling" class="sub-pane"></div>
-      <div id="sub-gisdb" class="sub-pane"></div>
+        <!-- ===================================== -->
+        <!-- SIDEBAR BÊN TRÁI                      -->
+        <!-- ===================================== -->
+        <aside class="sidebar">
+            
+            <!-- Logo -->
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoSphere</span>
+            </div>
+
+            <!-- Menu điều hướng -->
+            <nav class="nav-menu">
+                
+                <!-- ===== MÔI TRƯỜNG ===== -->
+                <div class="nav-item has-submenu">
+                    <div class="nav-header" data-menu="environment">
+                        <i class="fas fa-tree"></i>
+                        <span>🌿 Môi trường</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <ul class="submenu" id="submenu-environment">
+                        <li data-sub="climate"><i class="fas fa-temperature-high"></i> Biến đổi khí hậu</li>
+                        <li data-sub="ghg"><i class="fas fa-smog"></i> Khí nhà kính</li>
+                        <li data-sub="modeling"><i class="fas fa-chart-bar"></i> Mô hình hóa</li>
+                        <li data-sub="gisdb"><i class="fas fa-map"></i> GIS &amp; CSDL</li>
+                    </ul>
+                </div>
+
+                <!-- ===== XÃ HỘI ===== -->
+                <div class="nav-item has-submenu">
+                    <div class="nav-header" data-menu="society">
+                        <i class="fas fa-users"></i>
+                        <span>👥 Xã hội</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <ul class="submenu" id="submenu-society">
+                        <li data-menu="society"><i class="fas fa-globe-asia"></i> Xã hội &amp; Phát triển</li>
+                    </ul>
+                </div>
+
+                <!-- ===== NÔNG NGHIỆP ===== -->
+                <div class="nav-item has-submenu">
+                    <div class="nav-header" data-menu="agriculture">
+                        <i class="fas fa-seedling"></i>
+                        <span>🌾 Nông nghiệp</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <ul class="submenu" id="submenu-agriculture">
+                        <!-- Công nghệ cao -->
+                        <li data-sub-agri="high-tech"><i class="fas fa-microchip"></i> Công nghệ cao</li>
+                        
+                        <!-- Sản xuất nông nghiệp (có submenu dọc) -->
+                        <li class="has-submenu-vertical">
+                            <div class="submenu-header">
+                                <span><i class="fas fa-tractor"></i> Sản xuất nông nghiệp</span>
+                                <i class="fas fa-chevron-down arrow-vertical"></i>
+                            </div>
+                            <ul class="submenu-vertical">
+                                <li data-production="trangChu"><i class="fas fa-home"></i> Trang chủ</li>
+                                <li data-production="gioiThieu"><i class="fas fa-info-circle"></i> Giới thiệu</li>
+                                <li data-production="sanPham"><i class="fas fa-box-open"></i> Sản phẩm</li>
+                                <li data-production="quanHeCoDong"><i class="fas fa-chart-pie"></i> Quan hệ cổ đông</li>
+                                <li data-production="tinTuc"><i class="fas fa-newspaper"></i> Tin tức</li>
+                                <li data-production="doiTac"><i class="fas fa-handshake"></i> Đối tác</li>
+                                <li data-production="lienHe"><i class="fas fa-phone-alt"></i> Liên hệ</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+
+            <!-- Footer sidebar -->
+            <div style="padding: 1rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.7rem; opacity: 0.6; color: white; text-align: center;">
+                <i class="fas fa-leaf"></i> EcoSphere v2.0
+            </div>
+
+        </aside>
+
+        <!-- ===================================== -->
+        <!-- NỘI DUNG CHÍNH                       -->
+        <!-- ===================================== -->
+        <main class="main-content">
+
+            <!-- === HERO === -->
+            <div class="hero" id="hero">
+                <h1><i class="fas fa-charging-station"></i> EcoSphere · Môi trường · Xã hội · Nông nghiệp</h1>
+                <p>Hệ thống kiến thức tích hợp: khám phá chi tiết về Biến đổi khí hậu, Khí nhà kính, Mô hình hóa, GIS &amp; CSDL, cùng Công nghệ cao và Sản xuất nông nghiệp</p>
+            </div>
+
+            <!-- === NỘI DUNG ĐỘNG === -->
+            <div class="content-area" id="dynamic-content">
+                <!-- Nội dung sẽ được render bởi JavaScript -->
+                <div style="text-align: center; padding: 3rem 0; color: #888;">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
+                    <p style="margin-top: 1rem;">Đang tải dữ liệu...</p>
+                </div>
+            </div>
+
+            <!-- === FOOTER === -->
+            <div class="footer-note">
+                <span><i class="fas fa-leaf"></i> Nông nghiệp bền vững</span>
+                <span><i class="fas fa-handshake"></i> Hợp tác phát triển</span>
+                <span><i class="fas fa-globe"></i> Hội nhập quốc tế</span>
+            </div>
+
+        </main>
+
     </div>
 
-    <div class="primary-pane" id="primary-society"></div>
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT                               -->
+    <!-- ========================================= -->
 
-    <div class="primary-pane" id="primary-agri">
-      <div class="sub-tab-bar">
-        <button class="sub-tab-btn active-sub" data-sub-agri="high-tech"><i class="fas fa-microchip"></i> Công nghệ cao trong nông nghiệp</button>
-        <button class="sub-tab-btn" data-sub-agri="production"><i class="fas fa-seedling"></i> Sản xuất nông nghiệp</button>
-      </div>
-      <div id="sub-hightech" class="sub-pane active-sub-pane"></div>
-      <div id="sub-production" class="sub-pane"></div>
-    </div>
+    <!-- ===== DỮ LIỆU ===== -->
+    <script src="/js/data/init.js"></script>
+    <script src="/js/data/footer.js"></script>
 
-    <div class="footer-note"></div>
-  </div>
-</div>
+    <!-- ===== MÔI TRƯỜNG ===== -->
+    <script src="/js/data/environment/climate.js"></script>
+    <script src="/js/data/environment/ghg.js"></script>
+    <script src="/js/data/environment/modeling.js"></script>
+    <script src="/js/data/environment/gisdb.js"></script>
 
-<script src="/js/data.js"></script>
-<script src="/js/renderer.js"></script>
-<script src="/js/app.js"></script>
+    <!-- ===== XÃ HỘI ===== -->
+    <script src="/js/data/society/society.js"></script>
+
+    <!-- ===== NÔNG NGHIỆP ===== -->
+    <script src="/js/data/agriculture/highTech.js"></script>
+    <script src="/js/data/agriculture/production/trangChu.js"></script>
+    <script src="/js/data/agriculture/production/gioiThieu.js"></script>
+    <script src="/js/data/agriculture/production/sanPham.js"></script>
+    <script src="/js/data/agriculture/production/quanHeCoDong.js"></script>
+    <script src="/js/data/agriculture/production/tinTuc.js"></script>
+    <script src="/js/data/agriculture/production/doiTac.js"></script>
+    <script src="/js/data/agriculture/production/lienHe.js"></script>
+
+    <!-- ===== RENDERER ===== -->
+    <script src="/js/data/environment/environmentRenderer.js"></script>
+    <script src="/js/data/society/societyRenderer.js"></script>
+    <script src="/js/data/agriculture/agricultureRenderer.js"></script>
+    <script src="/js/renderer.js"></script>
+    <script src="/js/app.js"></script>
+
 </body>
 </html>

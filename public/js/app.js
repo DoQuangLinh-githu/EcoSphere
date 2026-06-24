@@ -1,97 +1,88 @@
-function initPrimaryTabs() {
-  const primaryBtns = document.querySelectorAll('.primary-tab');
-  const primaryPanes = {
-    env: document.getElementById('primary-env'),
-    society: document.getElementById('primary-society'),
-    agri: document.getElementById('primary-agri')
-  };
+// Xử lý menu sidebar
+function initSidebarMenu() {
+  // 1. Mở/đóng submenu cấp 1
+  const navItems = document.querySelectorAll('.nav-item.has-submenu');
+  navItems.forEach(item => {
+    const header = item.querySelector('.nav-header');
+    if (header) {
+      header.addEventListener('click', (e) => {
+        e.stopPropagation();
+        item.classList.toggle('open');
+      });
+    }
+  });
   
-  function activatePrimary(tabId) {
-    Object.values(primaryPanes).forEach(pane => pane?.classList.remove('active-primary-pane'));
-    if (primaryPanes[tabId]) primaryPanes[tabId].classList.add('active-primary-pane');
-    primaryBtns.forEach(btn => {
-      btn.classList.remove('active-primary');
-      if ((btn.dataset.primary === 'env' && tabId === 'env') ||
-          (btn.dataset.primary === 'society' && tabId === 'society') ||
-          (btn.dataset.primary === 'agri' && tabId === 'agri')) {
-        btn.classList.add('active-primary');
+  // 2. Môi trường
+  const envSubItems = document.querySelectorAll('#submenu-environment li');
+  envSubItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const subId = item.dataset.sub;
+      if (subId) {
+        renderEnvironmentContent(subId);
+        envSubItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
       }
     });
+  });
+  
+  // 3. Xã hội
+  const societyHeader = document.querySelector('.nav-header[data-menu="society"]');
+  if (societyHeader) {
+    societyHeader.addEventListener('click', () => {
+      renderSocietyContent();
+    });
   }
   
-  primaryBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const val = btn.dataset.primary;
-      if (val === 'env') activatePrimary('env');
-      else if (val === 'society') activatePrimary('society');
-      else if (val === 'agri') activatePrimary('agri');
+  // 4. Công nghệ cao
+  const highTechItem = document.querySelector('#submenu-agriculture li[data-sub-agri="high-tech"]');
+  if (highTechItem) {
+    highTechItem.addEventListener('click', () => {
+      renderHighTechContent();
+    });
+  }
+  
+  // 5. Sản xuất nông nghiệp - click để hiển thị mặc định (Trang chủ)
+  const productionParent = document.querySelector('.submenu li.has-submenu-vertical');
+  if (productionParent) {
+    const productionHeader = productionParent.querySelector('.submenu-header');
+    if (productionHeader) {
+      productionHeader.addEventListener('click', (e) => {
+        e.stopPropagation();
+        productionParent.classList.toggle('open');
+        // Mặc định hiển thị Trang chủ khi mở lần đầu
+        if (productionParent.classList.contains('open')) {
+          renderProductionContent('trangChu');
+        }
+      });
+    }
+  }
+  
+  // 6. Các mục con trong Sản xuất nông nghiệp
+  const productionItems = document.querySelectorAll('.submenu-vertical li');
+  productionItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const pageId = item.dataset.production;
+      if (pageId && typeof renderProductionContent === 'function') {
+        renderProductionContent(pageId);
+      }
     });
   });
 }
 
-function initSubEnvironmentTabs() {
-  const subEnvBtns = document.querySelectorAll('#primary-env .sub-tab-btn');
-  const subEnvPanes = {
-    climate: document.getElementById('sub-climate'),
-    ghg: document.getElementById('sub-ghg'),
-    modeling: document.getElementById('sub-modeling'),
-    gisdb: document.getElementById('sub-gisdb')
-  };
-  
-  function activateSubEnv(subId) {
-    Object.values(subEnvPanes).forEach(pane => pane?.classList.remove('active-sub-pane'));
-    if (subEnvPanes[subId]) subEnvPanes[subId].classList.add('active-sub-pane');
-    subEnvBtns.forEach(btn => {
-      btn.classList.remove('active-sub');
-      if (btn.dataset.sub === subId) btn.classList.add('active-sub');
-    });
+// Khởi tạo nội dung mặc định
+function initDefaultContent() {
+  if (typeof environmentData !== 'undefined' && environmentData.climate) {
+    renderEnvironmentContent('climate');
   }
-  
-  subEnvBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const subVal = btn.dataset.sub;
-      if (subVal === 'climate') activateSubEnv('climate');
-      else if (subVal === 'ghg') activateSubEnv('ghg');
-      else if (subVal === 'modeling') activateSubEnv('modeling');
-      else if (subVal === 'gisdb') activateSubEnv('gisdb');
-    });
-  });
-}
-
-function initSubAgricultureTabs() {
-  const subAgriBtns = document.querySelectorAll('#primary-agri .sub-tab-btn');
-  const subAgriPanes = {
-    'high-tech': document.getElementById('sub-hightech'),
-    'production': document.getElementById('sub-production')
-  };
-  
-  function activateSubAgri(subId) {
-    Object.values(subAgriPanes).forEach(pane => pane?.classList.remove('active-sub-pane'));
-    if (subAgriPanes[subId]) subAgriPanes[subId].classList.add('active-sub-pane');
-    subAgriBtns.forEach(btn => {
-      btn.classList.remove('active-sub');
-      if (btn.dataset.subAgri === subId) btn.classList.add('active-sub');
-    });
-  }
-  
-  subAgriBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const subVal = btn.dataset.subAgri;
-      if (subVal === 'high-tech') activateSubAgri('high-tech');
-      else if (subVal === 'production') activateSubAgri('production');
-    });
-  });
 }
 
 function initApp() {
-  console.log('🚀 App đã khởi động!');
-  renderEnvironment();
-  renderSociety();
-  renderAgriculture();
+  console.log('🌍 EcoSphere - Hệ sinh thái tri thức đã khởi động!');
   renderFooter();
-  initPrimaryTabs();
-  initSubEnvironmentTabs();
-  initSubAgricultureTabs();
+  initSidebarMenu();
+  initDefaultContent();
 }
 
 if (document.readyState === 'loading') {

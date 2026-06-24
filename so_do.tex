@@ -1,16 +1,50 @@
-C:\Users\Public\all_WEB\EcoSphere\
+📁 EcoSphere/
 │
-├── package.json          ← Phải có file này
-├── server.js             ← File server chính
-├── start.bat             ← File chạy tự động (tùy chọn)
+├── 📄 server.js
+├── 📄 package.json
+├── 📄 start.bat
 │
-├── node_modules/         ← Sau khi cài npm install, thư mục này sẽ tự tạo
-│
-└── public/
-    ├── index.html
-    ├── css/
-    │   └── style.css
-    └── js/
-        ├── data.js
-        ├── renderer.js
-        └── app.js
+└── 📁 public/
+    │
+    ├── 📄 index.html
+    │
+    ├── 📁 css/
+    │   └── 📄 style.css                    ← CSS chung toàn dự án
+    │
+    └── 📁 js/
+        │
+        ├── 📄 app.js                       ← Khởi tạo ứng dụng, menu
+        ├── 📄 renderer.js                  ← Renderer chính (điều phối)
+        │
+        └── 📁 data/
+            │
+            ├── 📄 init.js                  ← Khởi tạo biến toàn cục
+            ├── 📄 footer.js                ← Dữ liệu footer
+            │
+            ├── 📁 environment/             ← 🌿 LĨNH VỰC MÔI TRƯỜNG
+            │   ├── 📄 climate.js
+            │   ├── 📄 ghg.js
+            │   ├── 📄 modeling.js
+            │   ├── 📄 gisdb.js
+            │   ├── 📄 environment.css      ← CSS riêng (phong cách xanh lá)
+            │   └── 📄 environmentRenderer.js ← Renderer riêng
+            │
+            ├── 📁 society/                 ← 👥 LĨNH VỰC XÃ HỘI
+            │   ├── 📄 society.js
+            │   ├── 📄 society.css          ← CSS riêng (phong cách xanh dương)
+            │   └── 📄 societyRenderer.js   ← Renderer riêng
+            │
+            └── 📁 agriculture/             ← 🌾 LĨNH VỰC NÔNG NGHIỆP
+                │
+                ├── 📄 highTech.js
+                ├── 📄 agriculture.css      ← CSS riêng (phong cách nâu ấm)
+                ├── 📄 agricultureRenderer.js ← Renderer riêng
+                │
+                └── 📁 production/          ← Sản xuất nông nghiệp
+                    ├── 📄 trangChu.js
+                    ├── 📄 gioiThieu.js
+                    ├── 📄 sanPham.js
+                    ├── 📄 quanHeCoDong.js
+                    ├── 📄 tinTuc.js
+                    ├── 📄 doiTac.js
+                    └── 📄 lienHe.js

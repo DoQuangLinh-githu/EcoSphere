@@ -7,7 +7,16 @@
     "start": "node server.js",
     "dev": "node server.js"
   },
-  "keywords": ["environment", "agriculture", "society", "climate", "gis"],
+  "keywords": [
+    "environment",
+    "agriculture",
+    "society",
+    "climate",
+    "gis"
+  ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }

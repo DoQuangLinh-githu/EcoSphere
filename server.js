@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3000;
 // Serve static files
 app.use(express.static('public'));
 
-// Fallback - dùng '/*' thay vì '*'
-app.get('/*', (req, res) => {
+// Fallback - dùng regex để tránh lỗi path-to-regexp
+app.get(/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 

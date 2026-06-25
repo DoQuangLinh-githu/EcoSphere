@@ -2,11 +2,12 @@
 // APP.JS - IDSEA (Dữ liệu & Phân tích)
 // =============================================
 
-// URL của web QOF
-const QOF_URL = 'http://localhost:3000';
+// URL của web QOF (đã deploy trên Vercel)
+const QOF_URL = 'https://qof-hazel.vercel.app/';
 
 function initApp() {
     console.log('🏢 IDSEA - Dữ liệu & Phân tích đã khởi động!');
+    console.log('🔗 Liên kết QOF:', QOF_URL);
     
     // Render footer
     if (typeof renderFooter === 'function') {
@@ -20,7 +21,6 @@ function initApp() {
         if (header) {
             header.addEventListener('click', function(e) {
                 e.stopPropagation();
-                // Đóng các menu khác
                 navItems.forEach(other => {
                     if (other !== item) {
                         other.classList.remove('open');
@@ -81,7 +81,6 @@ function initApp() {
     }
     
     // ===== 6. HIỂN THỊ NỘI DUNG MẶC ĐỊNH =====
-    // Mặc định hiển thị GIS & CSDL (AI)
     if (typeof renderEnvironmentContent === 'function') {
         const firstItem = document.querySelector('#submenu-environment li[data-sub="gisai"]');
         if (firstItem) {
@@ -96,7 +95,6 @@ function renderEnvironmentContent(type) {
     const container = document.getElementById('dynamic-content');
     if (!container) return;
     
-    // Cập nhật Hero
     const hero = document.querySelector('.hero');
     if (hero) {
         hero.innerHTML = `

@@ -29,28 +29,53 @@ function renderEnvironmentContent(subTab) {
   
   const data = environmentData[subTab];
   const container = document.getElementById('dynamic-content');
-  if (!container || !data) return;
+  if (!container || !data) {
+    container.innerHTML = '<p class="env-empty">Nội dung đang được cập nhật...</p>';
+    return;
+  }
   
   let title = '';
   switch(subTab) {
-    case 'climate': title = '🌡️ Biến đổi khí hậu'; break;
-    case 'ghg': title = '💨 Khí nhà kính'; break;
-    case 'modeling': title = '📊 Mô hình hóa'; break;
-    case 'gisdb': title = '🗺️ Cơ sở dữ liệu & GIS'; break;
-    default: title = '🌿 Môi trường';
+    case 'gisai': 
+      title = '🗺️ GIS & CSDL (AI)'; 
+      break;
+    case 'modeling': 
+      title = '📊 Mô hình hóa'; 
+      break;
+    case 'renewable': 
+      title = '☀️ Năng lượng tái tạo'; 
+      break;
+    case 'climate': 
+      title = '🌡️ Khí nhà kính & BĐKH'; 
+      break;
+    default: 
+      title = '🌿 Môi trường';
   }
   
   // Cập nhật hero với style environment
-  updateHero('EcoSphere · Môi trường', 'Hệ thống kiến thức về Biến đổi khí hậu, Khí nhà kính, Mô hình hóa & GIS', null, 'environment');
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    hero.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+        <div>
+          <h1><i class="fas fa-globe-asia"></i> IDSEA · Môi trường</h1>
+          <p>Dữ liệu và phân tích về môi trường và biến đổi khí hậu</p>
+        </div>
+      </div>
+    `;
+    hero.className = 'hero hero-environment';
+  }
   
   container.innerHTML = `
     <div class="env-section">
       <h2 class="env-section-title"><i class="fas fa-leaf"></i> ${title}</h2>
       ${renderEnvCards(data.cards)}
-      <div class="env-highlight">
-        <i class="fas fa-chart-network"></i> 
-        <strong>${data.highlight || ''}</strong>
-      </div>
+      ${data.highlight ? `
+        <div class="env-highlight">
+          <i class="fas fa-chart-network"></i> 
+          <strong>${data.highlight}</strong>
+        </div>
+      ` : ''}
     </div>
   `;
 }

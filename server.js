@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Middleware để log requests (debug)
 app.use((req, res, next) => {
@@ -10,12 +10,12 @@ app.use((req, res, next) => {
 });
 
 // ✅ QUAN TRỌNG: Serve static files từ thư mục public
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'docs')));
 
 // ✅ Đảm bảo các file trong public được serve đúng đường dẫn
-app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
-app.use('/js', express.static(path.join(__dirname, 'public', 'js')));
-app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
+app.use('/css', express.static(path.join(__dirname, 'docs', 'css')));
+app.use('/js', express.static(path.join(__dirname, 'docs', 'js')));
+app.use('/images', express.static(path.join(__dirname, 'docs', 'images')));
 
 // Fallback middleware - gửi index.html
 app.use((req, res, next) => {
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
         return next();
     }
     // Gửi index.html cho tất cả các route khác
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'docs', 'index.html'));
 });
 
 // Export cho Vercel

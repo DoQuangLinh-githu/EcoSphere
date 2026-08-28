@@ -137,7 +137,7 @@ body {
 }
 
 /* ============================================
-   SUBMENU ITEMS - MỤC CON
+   SUBMENU ITEMS - MỤC CON VỚI DẤU SAO ✦
    ============================================ */
 .submenu li {
   padding: 0;
@@ -153,20 +153,17 @@ body {
   margin-bottom: 1px;
 }
 
-/* Nhánh cây ├── và └── */
+/* Dấu sao ✦ cho các mục con */
 .submenu li::before {
-  content: '├──';
-  color: rgba(255,255,255,0.2);
+  content: '✦';
+  color: rgba(255,255,255,0.3);
   font-size: 0.7rem;
-  font-weight: 300;
-  letter-spacing: 0.5px;
   flex-shrink: 0;
-  margin-right: 2px;
+  margin-right: 6px;
 }
 
-/* Mục cuối cùng dùng └── */
 .submenu li:last-child::before {
-  content: '└──';
+  content: '✦';
 }
 
 /* Nội dung bên trong mỗi item */

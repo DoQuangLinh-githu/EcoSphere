@@ -78,6 +78,8 @@ function initApp() {
                 renderEnvironmentContent(subId);
                 envItems.forEach(i => i.classList.remove('active'));
                 this.classList.add('active');
+                // Lưu trang đang xem
+                localStorage.setItem('idsea_current_page', subId);
             }
         });
     });
@@ -91,6 +93,8 @@ function initApp() {
                 renderSocietyContent();
                 societyItems.forEach(i => i.classList.remove('active'));
                 this.classList.add('active');
+                // Lưu trang đang xem
+                localStorage.setItem('idsea_current_page', 'society');
             }
         });
     });
@@ -104,11 +108,13 @@ function initApp() {
                 renderHighTechContent();
                 document.querySelectorAll('#submenu-agriculture li').forEach(i => i.classList.remove('active'));
                 this.classList.add('active');
+                // Lưu trang đang xem
+                localStorage.setItem('idsea_current_page', 'high-tech');
             }
         });
     }
 
-    // ===== 6. MẶC ĐỊNH: MỞ MENU MÔI TRƯỜNG & HIỂN THỊ GISAI =====
+    // ===== 6. MẶC ĐỊNH: MỞ MENU MÔI TRƯỜNG =====
     const envMenu = document.querySelector('.nav-header[data-menu="environment"]');
     if (envMenu) {
         const parent = envMenu.closest('.nav-item');
@@ -117,12 +123,39 @@ function initApp() {
         }
     }
 
-    if (typeof renderEnvironmentContent === 'function') {
-        const firstItem = document.querySelector('#submenu-environment li[data-sub="gisai"]');
-        if (firstItem) {
-            firstItem.classList.add('active');
+    // ===== 7. HIỂN THỊ NỘI DUNG THEO TRANG ĐÃ LƯU HOẶC TRANG MẶC ĐỊNH =====
+    const savedPage = localStorage.getItem('idsea_current_page');
+    
+    if (savedPage && typeof renderEnvironmentContent === 'function' && ['gisai', 'modeling', 'renewable', 'climate'].includes(savedPage)) {
+        // Hiển thị trang đã lưu (Môi trường)
+        const savedItem = document.querySelector(`#submenu-environment li[data-sub="${savedPage}"]`);
+        if (savedItem) {
+            savedItem.classList.add('active');
         }
-        renderEnvironmentContent('gisai'); // Hiển thị GIS & Climate Smart City
+        renderEnvironmentContent(savedPage);
+    } else if (savedPage === 'society' && typeof renderSocietyContent === 'function') {
+        // Hiển thị trang đã lưu (Xã hội)
+        const savedItem = document.querySelector('#submenu-society li');
+        if (savedItem) {
+            savedItem.classList.add('active');
+        }
+        renderSocietyContent();
+    } else if (savedPage === 'high-tech' && typeof renderHighTechContent === 'function') {
+        // Hiển thị trang đã lưu (Công nghệ cao)
+        const savedItem = document.querySelector('#submenu-agriculture li[data-sub-agri="high-tech"]');
+        if (savedItem) {
+            savedItem.classList.add('active');
+        }
+        renderHighTechContent();
+    } else {
+        // Mặc định hiển thị GIS & CSDL
+        if (typeof renderEnvironmentContent === 'function') {
+            const firstItem = document.querySelector('#submenu-environment li[data-sub="gisai"]');
+            if (firstItem) {
+                firstItem.classList.add('active');
+            }
+            renderEnvironmentContent('gisai');
+        }
     }
 }
 

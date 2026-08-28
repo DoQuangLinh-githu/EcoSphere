@@ -95,25 +95,26 @@ body {
 }
 
 /* ============================================
-   SUBMENU CHÍNH
+   SUBMENU CHÍNH - SỬA LỖI HIỂN THỊ
    ============================================ */
 .submenu {
   list-style: none;
-  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  padding: 0.5rem 0.5rem 0.8rem 2rem;  /* Tăng padding-left để thụt vào nhiều hơn */
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
   opacity: 0;
+  margin: 0;
 }
 
 .nav-item.open .submenu {
-  max-height: 500px;
+  max-height: 600px;  /* Tăng lên để chứa nhiều mục */
   opacity: 1;
 }
 
 /* Style cho các mục trong submenu */
 .submenu li {
-  padding: 0.7rem 1rem;
+  padding: 0.6rem 0.8rem;  /* Giảm padding một chút */
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -122,6 +123,8 @@ body {
   transition: all 0.2s ease;
   font-size: 0.9rem;
   color: rgba(255,255,255,0.8);
+  margin-bottom: 2px;  /* Thêm khoảng cách giữa các mục */
+  border-left: 3px solid transparent;  /* Thêm border-left mặc định */
 }
 
 .submenu li:hover {
@@ -139,6 +142,7 @@ body {
 .submenu li i {
   width: 24px;
   font-size: 1rem;
+  flex-shrink: 0;
 }
 
 /* ============================================
@@ -148,13 +152,14 @@ body {
   display: block;
   cursor: pointer;
   padding: 0;
+  border-left: none !important;  /* Bỏ border-left cho item cha */
 }
 
 .submenu-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.7rem 1rem;
+  padding: 0.6rem 0.8rem;
   width: 100%;
   border-radius: 8px;
   transition: all 0.2s ease;
@@ -183,7 +188,7 @@ body {
 
 .submenu-vertical {
   list-style: none;
-  padding-left: 2rem;
+  padding-left: 1.5rem;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
@@ -203,6 +208,7 @@ body {
   transition: all 0.2s ease;
   font-size: 0.85rem;
   color: rgba(255,255,255,0.7);
+  border-left: 3px solid transparent;
 }
 
 .submenu-vertical li:hover {
@@ -220,6 +226,31 @@ body {
 .submenu-vertical li i {
   width: 20px;
   font-size: 0.85rem;
+}
+
+/* ===== STYLE CHO LINK TRONG SUBMENU (Sản xuất nông nghiệp) ===== */
+.submenu li a {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  width: 100%;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.submenu li a:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  transform: translateX(5px);
+}
+
+.submenu li a i:first-child {
+  width: 24px;
+  flex-shrink: 0;
 }
 
 /* ============================================
@@ -698,20 +729,20 @@ body {
   }
   
   .submenu {
-    padding-left: 0.5rem;
+    padding-left: 1rem;
   }
   
   .submenu li {
-    padding: 0.6rem 0.8rem;
+    padding: 0.5rem 0.6rem;
     font-size: 0.85rem;
   }
   
   .submenu-vertical {
-    padding-left: 1rem;
+    padding-left: 0.8rem;
   }
   
   .submenu-vertical li {
-    padding: 0.5rem 0.8rem;
+    padding: 0.4rem 0.6rem;
     font-size: 0.8rem;
   }
   
@@ -793,24 +824,28 @@ body {
     padding: 0.3rem 0.6rem;
   }
   
+  .submenu {
+    padding-left: 0.5rem;
+  }
+  
   .submenu li {
-    padding: 0.5rem 0.6rem;
-    font-size: 0.8rem;
-  }
-  
-  .submenu li i {
-    width: 20px;
-    font-size: 0.85rem;
-  }
-  
-  .submenu-vertical li {
-    padding: 0.4rem 0.6rem;
+    padding: 0.4rem 0.5rem;
     font-size: 0.75rem;
   }
   
-  .submenu-vertical li i {
+  .submenu li i {
     width: 18px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+  }
+  
+  .submenu-vertical li {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+  }
+  
+  .submenu-vertical li i {
+    width: 16px;
+    font-size: 0.7rem;
   }
   
   .info-grid {

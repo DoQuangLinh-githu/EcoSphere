@@ -6,9 +6,6 @@
     <title>🏢 IDSEA - Dữ liệu & Phân tích</title>
     
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/js/data/environment/environment.css">
-    <link rel="stylesheet" href="/js/data/society/society.css">
-    <link rel="stylesheet" href="/js/data/agriculture/agriculture.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -25,11 +22,7 @@
             <i class="fas fa-building"></i>
             <span>IDSEA</span>
         </div>
-        <div class="mobile-header-right">
-            <a href="https://qof-hazel.vercel.app/" target="_blank" class="mobile-qof-link">
-                <i class="fas fa-tractor"></i>
-            </a>
-        </div>
+        <!-- ĐÃ XÓA NÚT MÁY KÉO Ở GÓC PHẢI -->
     </header>
 
     <!-- OVERLAY -->
@@ -46,7 +39,7 @@
         <nav class="nav-menu">
             <ul>
                 <!-- ===== MÔI TRƯỜNG ===== -->
-                <li class="nav-item has-submenu open">
+                <li class="nav-item has-submenu">
                     <div class="nav-header" data-menu="environment">
                         <i class="fas fa-globe-asia"></i>
                         <span>🌿 Môi trường</span>
@@ -111,12 +104,11 @@
                                 <span class="label">Công nghệ cao</span>
                             </span>
                         </li>
+                        <!-- CHỖ DUY NHẤT ĐỂ CHUYỂN SANG WEB NGOÀI -->
                         <li>
-                            <a href="https://qof-hazel.vercel.app/" target="_blank">
+                            <a href="https://qof-hazel.vercel.app/" target="_blank" class="item-content" style="text-decoration: none; color: inherit;">
                                 <i class="fas fa-tractor"></i>
                                 <span class="label">Sản xuất nông nghiệp</span>
-                                <span class="qof-badge">QOF</span>
-                                <i class="fas fa-external-link-alt external-icon"></i>
                             </a>
                         </li>
                     </ul>
@@ -124,15 +116,7 @@
             </ul>
         </nav>
 
-        <!-- NÚT CHUYỂN SANG QOF -->
-        <div class="sidebar-footer-qof">
-            <a href="https://qof-hazel.vercel.app/" target="_blank" class="qof-link">
-                <i class="fas fa-rocket"></i>
-                <span>🌾 QUYNH ORGANIC FARM</span>
-                <span class="qof-badge-small">QOF</span>
-                <i class="fas fa-external-link-alt qof-external-icon"></i>
-            </a>
-        </div>
+        <!-- ĐÃ XÓA NÚT "QUYNH ORGANIC FARM" Ở CUỐI SIDEBAR -->
 
         <!-- Footer -->
         <div class="sidebar-footer">
@@ -156,12 +140,15 @@
             </div>
         </div>
 
-        <div class="footer-note">
+        <!-- Footer Note: Đã gom nhỏ và đặt xuống cuối cùng -->
+        <div class="footer-note" id="footerNote">
             <span><i class="fas fa-map"></i> GIS và CSDL</span>
             <span><i class="fas fa-chart-bar"></i> Mô hình hóa</span>
             <span><i class="fas fa-solar-panel"></i> Năng lượng tái tạo</span>
             <span><i class="fas fa-temperature-high"></i> Khí nhà kính và BĐKH</span>
-            <span class="footer-separator">| IDSEA</span>
+            <span class="footer-separator">|</span>
+            <span><i class="fas fa-microchip"></i> Công nghệ cao</span>
+            <span><i class="fas fa-tractor"></i> Sản xuất nông nghiệp</span>
         </div>
     </main>
 </div>
@@ -209,25 +196,19 @@
             overlay.addEventListener('click', closeMenu);
         }
 
-        // Đóng menu khi click vào link trong sidebar (mobile)
-        document.querySelectorAll('.sidebar a, .sidebar li[data-sub], .sidebar li[data-menu], .sidebar li[data-sub-agri]').forEach(function(el) {
+        // Đóng menu khi bấm vào các mục trong menu
+        document.querySelectorAll('.sidebar li, .sidebar a').forEach(function(el) {
             el.addEventListener('click', function() {
                 if (window.innerWidth <= 768) {
                     setTimeout(closeMenu, 300);
                 }
+                // Nếu là link ngoài, trình duyệt tự mở tab mới, không cần chặn
             });
         });
 
-        // Đóng menu khi resize từ mobile lên desktop
+        // Đóng menu khi resize
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768 && sidebar.classList.contains('mobile-open')) {
-                closeMenu();
-            }
-        });
-
-        // Keyboard: ESC để đóng menu
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && sidebar.classList.contains('mobile-open')) {
                 closeMenu();
             }
         });

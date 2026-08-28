@@ -52,7 +52,7 @@ body {
    ============================================ */
 .nav-menu {
   flex: 1;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 
 .nav-menu ul {
@@ -65,29 +65,40 @@ body {
   margin-bottom: 0.25rem;
 }
 
+/* ============================================
+   NAV HEADER - MENU CHA
+   ============================================ */
 .nav-header {
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   display: flex;
   align-items: center;
   gap: 0.8rem;
   cursor: pointer;
   transition: 0.2s;
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: 6px;
   margin: 0 0.5rem;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+  position: relative;
 }
 
 .nav-header:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.08);
+  color: white;
 }
 
 .nav-header i:first-child {
-  width: 24px;
+  width: 22px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
 .nav-header .arrow {
   margin-left: auto;
   transition: transform 0.3s ease;
+  font-size: 0.7rem;
+  opacity: 0.6;
 }
 
 .nav-item.open .nav-header .arrow {
@@ -95,162 +106,132 @@ body {
 }
 
 /* ============================================
-   SUBMENU CHÍNH - SỬA LỖI HIỂN THỊ
+   SUBMENU - KHÔNG ĐƯỜNG DỌC
    ============================================ */
 .submenu {
   list-style: none;
-  padding: 0.5rem 0.5rem 0.8rem 2rem;  /* Tăng padding-left để thụt vào nhiều hơn */
+  padding: 0.3rem 0 0.5rem 0;
+  margin: 0 0.5rem 0 1.5rem;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
   opacity: 0;
-  margin: 0;
 }
 
 .nav-item.open .submenu {
-  max-height: 600px;  /* Tăng lên để chứa nhiều mục */
+  max-height: 600px;
   opacity: 1;
 }
 
-/* Style cho các mục trong submenu */
+/* ============================================
+   SUBMENU ITEMS - VỚI DẤU SAO ✦
+   ============================================ */
 .submenu li {
-  padding: 0.6rem 0.8rem;  /* Giảm padding một chút */
+  padding: 0;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.6rem;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 4px;
   transition: all 0.2s ease;
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 2px;  /* Thêm khoảng cách giữa các mục */
-  border-left: 3px solid transparent;  /* Thêm border-left mặc định */
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.7);
+  position: relative;
+  margin-bottom: 1px;
 }
 
-.submenu li:hover {
-  background: rgba(255,255,255,0.1);
+/* Dấu sao ✦ cho các mục con */
+.submenu li::before {
+  content: '✦';
+  color: rgba(255,255,255,0.3);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+  margin-right: 6px;
+}
+
+.submenu li:last-child::before {
+  content: '✦';
+}
+
+/* Nội dung bên trong mỗi item */
+.submenu li > * {
+  padding: 0.45rem 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect - chỉ highlight nhẹ quanh item */
+.submenu li:hover > * {
+  background: rgba(255,255,255,0.08);
   color: white;
-  transform: translateX(5px);
+}
+
+/* Active state */
+.submenu li.active > * {
+  background: rgba(255,255,255,0.12);
+  color: #d4e6b3;
 }
 
 .submenu li.active {
-  background: rgba(255,255,255,0.15);
   color: #d4e6b3;
-  border-left: 3px solid #d4e6b3;
 }
 
+/* Icon trong submenu */
 .submenu li i {
-  width: 24px;
-  font-size: 1rem;
+  width: 18px;
+  font-size: 0.85rem;
   flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.submenu li.active i {
+  opacity: 1;
 }
 
 /* ============================================
-   SUBMENU DỌC (Sản xuất nông nghiệp)
+   LINK TRONG SUBMENU (Sản xuất nông nghiệp)
    ============================================ */
-.submenu li.has-submenu-vertical {
-  display: block;
-  cursor: pointer;
-  padding: 0;
-  border-left: none !important;  /* Bỏ border-left cho item cha */
-}
-
-.submenu-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.6rem 0.8rem;
-  width: 100%;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  color: rgba(255,255,255,0.8);
-}
-
-.submenu-header:hover {
-  background: rgba(255,255,255,0.1);
-  color: white;
-}
-
-.submenu-header span {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.submenu-header .arrow-vertical {
-  font-size: 0.7rem;
-  transition: transform 0.3s ease;
-}
-
-.submenu li.has-submenu-vertical.open .arrow-vertical {
-  transform: rotate(180deg);
-}
-
-.submenu-vertical {
-  list-style: none;
-  padding-left: 1.5rem;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-.submenu li.has-submenu-vertical.open .submenu-vertical {
-  max-height: 400px;
-}
-
-.submenu-vertical li {
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.7);
-  border-left: 3px solid transparent;
-}
-
-.submenu-vertical li:hover {
-  background: rgba(255,255,255,0.1);
-  color: white;
-  transform: translateX(5px);
-}
-
-.submenu-vertical li.active {
-  background: rgba(255,255,255,0.15);
-  color: #d4e6b3;
-  border-left: 3px solid #d4e6b3;
-}
-
-.submenu-vertical li i {
-  width: 20px;
-  font-size: 0.85rem;
-}
-
-/* ===== STYLE CHO LINK TRONG SUBMENU (Sản xuất nông nghiệp) ===== */
 .submenu li a {
+  text-decoration: none;
+  color: inherit;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  padding: 0.6rem 0.8rem;
-  color: rgba(255,255,255,0.8);
-  text-decoration: none;
+  gap: 0.6rem;
   width: 100%;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
+  padding: 0.45rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
 }
 
 .submenu li a:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.08);
   color: white;
-  transform: translateX(5px);
 }
 
 .submenu li a i:first-child {
-  width: 24px;
+  width: 18px;
+  font-size: 0.85rem;
   flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* QOF badge */
+.submenu li a .qof-badge {
+  font-size: 0.5rem;
+  opacity: 0.5;
+  background: rgba(255,255,255,0.1);
+  padding: 1px 8px;
+  border-radius: 10px;
+  margin-left: auto;
+}
+
+.submenu li a .external-icon {
+  font-size: 0.65rem;
+  opacity: 0.4;
 }
 
 /* ============================================
@@ -311,7 +292,7 @@ body {
 }
 
 /* ============================================
-   DATA SECTION (IDSEA)
+   DATA SECTION
    ============================================ */
 .data-section {
   padding: 0.5rem 0;
@@ -326,9 +307,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ============================================
-   CARD GRID
-   ============================================ */
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -366,293 +344,6 @@ body {
   white-space: pre-line;
 }
 
-.badge-sm {
-  display: inline-block;
-  background: #ecf5e6;
-  border-radius: 20px;
-  padding: 0.2rem 0.7rem;
-  font-size: 0.7rem;
-  margin-top: 0.6rem;
-  color: #2a734b;
-}
-
-.highlight-block {
-  background: #f4fbf0;
-  border-radius: 1rem;
-  padding: 1rem;
-  margin-top: 1rem;
-  border-left: 4px solid #2a9d6e;
-}
-
-/* ============================================
-   AGRICULTURE CARDS
-   ============================================ */
-.agri-section {
-  padding: 0.5rem 0;
-}
-
-.agri-section-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #3e2723;
-  padding-bottom: 0.8rem;
-  border-bottom: 3px solid #ff8a65;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.agri-page-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding-bottom: 1.2rem;
-  border-bottom: 2px solid #d7ccc8;
-  margin-bottom: 1.5rem;
-}
-
-.agri-page-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #3e2723;
-  margin: 0;
-}
-
-/* List */
-.agri-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  margin: 1rem 0;
-}
-
-/* Card */
-.agri-card {
-  background: #faf7f5;
-  border-radius: 16px;
-  padding: 1.5rem 2rem;
-  border: 1px solid #d7ccc8;
-  transition: all 0.3s ease;
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-}
-
-.agri-card:hover {
-  transform: translateX(6px);
-  box-shadow: 0 6px 25px rgba(62, 39, 35, 0.08);
-  border-color: #ff8a65;
-}
-
-.agri-card-icon {
-  flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  background: #efe5e0;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  color: #5d4037;
-  transition: all 0.3s ease;
-}
-
-.agri-card:hover .agri-card-icon {
-  background: #5d4037;
-  color: white;
-  transform: scale(1.05) rotate(-5deg);
-}
-
-.agri-card-content {
-  flex: 1;
-}
-
-.agri-card-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #3e2723;
-  margin: 0 0 0.4rem 0;
-}
-
-.agri-card-text {
-  font-size: 0.92rem;
-  color: #5a4a4a;
-  line-height: 1.7;
-  margin: 0;
-  white-space: pre-line;
-}
-
-.agri-badge {
-  display: inline-block;
-  margin-top: 0.6rem;
-  background: #5d4037;
-  color: white;
-  padding: 0.2rem 1.2rem;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.agri-highlight {
-  background: #f5edea;
-  border-radius: 12px;
-  padding: 1.2rem 1.8rem;
-  margin-top: 1.5rem;
-  border-left: 5px solid #ff8a65;
-  font-size: 0.95rem;
-  color: #3e2723;
-}
-
-.agri-empty {
-  color: #8a7a7a;
-  font-style: italic;
-  text-align: center;
-  padding: 2rem;
-}
-
-/* ============================================
-   IMAGE STYLES
-   ============================================ */
-.agri-card-image-wrapper {
-  margin-top: 0.8rem;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid #d7ccc8;
-  background: #f5f0ed;
-  max-width: 650px;
-}
-
-.agri-card-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 10px 10px 0 0;
-  box-shadow: 0 2px 8px rgba(62, 39, 35, 0.06);
-}
-
-.agri-card-image-caption {
-  font-size: 0.75rem;
-  color: #8a7a7a;
-  padding: 0.4rem 1rem;
-  background: #f5f0ed;
-  border-top: 1px solid #d7ccc8;
-  text-align: center;
-  font-style: italic;
-}
-
-/* Grid images */
-.agri-card-images-wrapper {
-  margin-top: 0.8rem;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid #d7ccc8;
-  background: #f5f0ed;
-  max-width: 100%;
-}
-
-.agri-card-images-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  background: #f5f0ed;
-}
-
-.agri-card-image-item {
-  border-radius: 8px;
-  overflow: hidden;
-  background: white;
-  border: 1px solid #e8e0da;
-  transition: all 0.3s ease;
-}
-
-.agri-card-image-item:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.15);
-  z-index: 2;
-}
-
-.agri-card-image-item .agri-card-image {
-  border-radius: 8px;
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ============================================
-   VERTICAL LIST
-   ============================================ */
-.vertical-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1rem 0;
-}
-
-.feature-card-vertical {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 1.5rem 2rem;
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid #e8f0e0;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-
-.feature-card-vertical:hover {
-  border-color: #2e7d32;
-  box-shadow: 0 4px 16px rgba(46, 125, 50, 0.1);
-}
-
-.card-icon-large {
-  flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f0f7ec;
-  border-radius: 12px;
-  font-size: 2rem;
-  color: #2e7d32;
-  transition: all 0.3s ease;
-}
-
-.feature-card-vertical:hover .card-icon-large {
-  background: #2e7d32;
-  color: white;
-  transform: scale(1.05);
-}
-
-.card-content {
-  flex: 1;
-}
-
-.card-title-vertical {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #1a3a2a;
-  margin: 0 0 0.4rem 0;
-  letter-spacing: 0.5px;
-}
-
-.card-text-vertical {
-  font-size: 0.95rem;
-  color: #3d5a4a;
-  line-height: 1.7;
-  margin: 0;
-}
-
-/* ============================================
-   FOOTER
-   ============================================ */
 .footer-note {
   margin-top: 2rem;
   padding-top: 1rem;
@@ -663,24 +354,6 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.8rem;
-}
-
-/* ============================================
-   IDSEA SPECIFIC STYLES
-   ============================================ */
-/* Style cho Dữ liệu menu */
-#submenu-data li {
-  border-left: 2px solid transparent;
-  transition: all 0.2s ease;
-}
-
-#submenu-data li:hover {
-  border-left-color: #4caf50;
-}
-
-#submenu-data li.active {
-  border-left-color: #4caf50;
-  background: rgba(76, 175, 80, 0.15);
 }
 
 /* ============================================
@@ -699,77 +372,25 @@ body {
     padding: 1rem;
   }
   
-  .agri-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1.5rem;
-  }
-  
-  .agri-section-title {
-    font-size: 1.3rem;
-  }
-  
-  .agri-page-title {
-    font-size: 1.4rem;
-  }
-  
-  .agri-page-header {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .agri-card-image-wrapper {
-    max-width: 100%;
-  }
-  
-  .agri-card-images-grid {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
-  }
-  
   .submenu {
-    padding-left: 1rem;
+    margin-left: 1rem;
   }
   
   .submenu li {
-    padding: 0.5rem 0.6rem;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
   }
   
-  .submenu-vertical {
-    padding-left: 0.8rem;
+  .submenu li::before {
+    font-size: 0.6rem;
   }
   
-  .submenu-vertical li {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.8rem;
+  .submenu li i {
+    width: 16px;
+    font-size: 0.75rem;
   }
   
-  .feature-card-vertical {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1.5rem;
-  }
-  
-  .card-icon-large {
-    width: 56px;
-    height: 56px;
-    font-size: 1.6rem;
-  }
-  
-  .page-title {
-    font-size: 1.4rem;
-  }
-  
-  .card-title-vertical {
-    font-size: 1.1rem;
-  }
-  
-  .data-header {
-    flex-direction: column;
-    text-align: center;
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -783,69 +404,27 @@ body {
     padding: 1rem;
   }
   
-  .agri-card {
-    padding: 1rem;
-  }
-  
-  .agri-card-icon {
-    width: 44px;
-    height: 44px;
-    font-size: 1.2rem;
-  }
-  
-  .agri-card-title {
-    font-size: 1rem;
-  }
-  
-  .agri-card-text {
-    font-size: 0.85rem;
-  }
-  
-  .agri-section-title {
-    font-size: 1.1rem;
-  }
-  
-  .agri-page-title {
-    font-size: 1.2rem;
-  }
-  
-  .agri-highlight {
-    padding: 1rem;
-    font-size: 0.85rem;
-  }
-  
-  .agri-card-images-grid {
-    padding: 0.3rem;
-    gap: 0.5rem;
-  }
-  
-  .agri-card-image-caption {
-    font-size: 0.65rem;
-    padding: 0.3rem 0.6rem;
-  }
-  
   .submenu {
-    padding-left: 0.5rem;
+    margin-left: 0.6rem;
   }
   
   .submenu li {
-    padding: 0.4rem 0.5rem;
     font-size: 0.75rem;
+  }
+  
+  .submenu li::before {
+    font-size: 0.5rem;
+    margin-right: 4px;
   }
   
   .submenu li i {
-    width: 18px;
-    font-size: 0.75rem;
-  }
-  
-  .submenu-vertical li {
-    padding: 0.3rem 0.5rem;
+    width: 14px;
     font-size: 0.7rem;
   }
   
-  .submenu-vertical li i {
-    width: 16px;
-    font-size: 0.7rem;
+  .submenu li > *,
+  .submenu li a {
+    padding: 0.35rem 0.4rem;
   }
   
   .info-grid {

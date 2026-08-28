@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>🏢 IDSEA - Dữ liệu & Phân tích</title>
     
     <link rel="stylesheet" href="/css/style.css">
@@ -10,31 +10,37 @@
     <link rel="stylesheet" href="/js/data/society/society.css">
     <link rel="stylesheet" href="/js/data/agriculture/agriculture.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="app-container">
 
     <!-- MOBILE HEADER -->
-    <div class="mobile-header">
-        <button class="menu-toggle" id="menuToggle">
+    <header class="mobile-header" id="mobileHeader">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
             <i class="fas fa-bars"></i>
         </button>
         <div class="mobile-logo">
             <i class="fas fa-building"></i>
             <span>IDSEA</span>
         </div>
-    </div>
+        <div class="mobile-header-right">
+            <a href="https://qof-hazel.vercel.app/" target="_blank" class="mobile-qof-link">
+                <i class="fas fa-tractor"></i>
+            </a>
+        </div>
+    </header>
 
     <!-- OVERLAY -->
     <div class="overlay" id="overlay"></div>
 
     <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
         <div class="logo">
             <i class="fas fa-building"></i>
             <span>IDSEA</span>
-            <span style="font-size: 0.5rem; opacity: 0.5; margin-left: auto;">v2.0</span>
+            <span class="version-badge">v2.0</span>
         </div>
 
         <nav class="nav-menu">
@@ -119,22 +125,17 @@
         </nav>
 
         <!-- NÚT CHUYỂN SANG QOF -->
-        <div style="padding: 1rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: auto;">
-            <a href="https://qof-hazel.vercel.app/" target="_blank" 
-               style="display: flex; align-items: center; gap: 0.8rem; 
-                      color: rgba(255,255,255,0.5); text-decoration: none; 
-                      padding: 0.5rem 0; transition: 0.3s; font-size: 0.8rem;"
-               onmouseover="this.style.color='white'; this.style.transform='translateX(4px)'"
-               onmouseout="this.style.color='rgba(255,255,255,0.5)'; this.style.transform='translateX(0)'">
+        <div class="sidebar-footer-qof">
+            <a href="https://qof-hazel.vercel.app/" target="_blank" class="qof-link">
                 <i class="fas fa-rocket"></i>
                 <span>🌾 QUYNH ORGANIC FARM</span>
-                <span style="font-size: 0.4rem; opacity: 0.4; background: rgba(255,255,255,0.06); padding: 1px 6px; border-radius: 6px;">QOF</span>
-                <i class="fas fa-external-link-alt" style="font-size: 0.5rem; margin-left: auto; opacity: 0.3;"></i>
+                <span class="qof-badge-small">QOF</span>
+                <i class="fas fa-external-link-alt qof-external-icon"></i>
             </a>
         </div>
 
         <!-- Footer -->
-        <div style="padding: 0.5rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.04); font-size: 0.55rem; opacity: 0.3; color: white; text-align: center;">
+        <div class="sidebar-footer">
             © 2026 IDSEA · Dữ liệu & Phân tích
         </div>
     </aside>
@@ -142,18 +143,16 @@
     <!-- MAIN CONTENT -->
     <main class="main-content">
         <div class="hero" id="hero">
-            <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
-                <div>
-                    <h1><i class="fas fa-building"></i> IDSEA · Dữ liệu & Phân tích</h1>
-                    <p>Hệ thống dữ liệu tích hợp: Môi trường · Xã hội · Nông nghiệp</p>
-                </div>
+            <div class="hero-content">
+                <h1><i class="fas fa-building"></i> IDSEA · Dữ liệu & Phân tích</h1>
+                <p>Hệ thống dữ liệu tích hợp: Môi trường · Xã hội · Nông nghiệp</p>
             </div>
         </div>
 
         <div class="content-area" id="dynamic-content">
-            <div style="text-align: center; padding: 3rem 0; color: #888;">
-                <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
-                <p style="margin-top: 1rem;">Đang tải dữ liệu...</p>
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Đang tải dữ liệu...</p>
             </div>
         </div>
 
@@ -162,7 +161,7 @@
             <span><i class="fas fa-chart-bar"></i> Mô hình hóa</span>
             <span><i class="fas fa-solar-panel"></i> Năng lượng tái tạo</span>
             <span><i class="fas fa-temperature-high"></i> Khí nhà kính và BĐKH</span>
-            <span style="opacity: 0.5;">| IDSEA</span>
+            <span class="footer-separator">| IDSEA</span>
         </div>
     </main>
 </div>
@@ -222,6 +221,13 @@
         // Đóng menu khi resize từ mobile lên desktop
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768 && sidebar.classList.contains('mobile-open')) {
+                closeMenu();
+            }
+        });
+
+        // Keyboard: ESC để đóng menu
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && sidebar.classList.contains('mobile-open')) {
                 closeMenu();
             }
         });

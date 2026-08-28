@@ -18,7 +18,7 @@ body {
   background: #f4f7f6;
   color: #1d2f2a;
   -webkit-font-smoothing: antialiased;
-  line-height: 1.5; /* Giảm line-height gọn hơn */
+  line-height: 1.5;
 }
 
 /* ============================================
@@ -46,8 +46,8 @@ body {
 }
 
 .sidebar .logo {
-  padding: 1.2rem; /* Giảm padding */
-  font-size: 1.2rem; /* Giảm size logo */
+  padding: 1.2rem;
+  font-size: 1.2rem;
   font-weight: 800;
   display: flex;
   align-items: center;
@@ -70,7 +70,7 @@ body {
 }
 
 .nav-header {
-  padding: 0.6rem 1rem; /* Giảm padding */
+  padding: 0.6rem 1rem;
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -80,7 +80,7 @@ body {
   border-radius: 10px;
   margin: 0.1rem 0.6rem;
   color: rgba(255,255,255,0.9);
-  font-size: 0.85rem; /* Giảm xuống 0.85rem */
+  font-size: 0.85rem;
   line-height: 1.4;
 }
 
@@ -125,7 +125,7 @@ body {
   gap: 0.5rem;
   cursor: pointer;
   border-radius: 8px;
-  font-size: 0.8rem; /* Giảm xuống 0.8rem */
+  font-size: 0.8rem;
   color: rgba(255,255,255,0.75);
   margin-bottom: 2px;
 }
@@ -170,7 +170,7 @@ body {
 .sidebar-footer {
   padding: 0.8rem 1.2rem;
   border-top: 1px solid rgba(255,255,255,0.05);
-  font-size: 0.65rem; /* Nhỏ hơn */
+  font-size: 0.65rem;
   opacity: 0.6;
   color: white;
 }
@@ -181,14 +181,14 @@ body {
 .mobile-header {
   display: flex !important;
   background: linear-gradient(180deg, #1b4d3c 0%, #0f2e23 100%);
-  padding: 0.6rem 0.8rem; /* Giảm padding */
+  padding: 0.6rem 0.8rem;
   align-items: center;
   gap: 0.6rem;
   position: sticky;
   top: 0;
   z-index: 999;
   width: 100% !important;
-  height: 55px; /* Giảm chiều cao */
+  height: 55px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -197,7 +197,7 @@ body {
   align-items: center;
   gap: 0.4rem;
   color: white;
-  font-size: 1rem; /* Giảm logo */
+  font-size: 1rem;
   font-weight: 800;
 }
 
@@ -258,15 +258,15 @@ body {
   width: 100% !important;
   max-width: 100vw !important;
   background: #f4f7f6;
-  padding: 0.8rem; /* Giảm padding */
+  padding: 0.8rem;
   overflow-x: hidden !important;
-  margin-top: 55px; /* Khớp với height mobile header */
+  margin-top: 55px;
 }
 
 /* HERO */
 .hero {
   background: linear-gradient(135deg, #1b4d3c 0%, #2f7553 100%);
-  padding: 1.2rem; /* Giảm padding */
+  padding: 1.2rem;
   border-radius: 16px;
   color: white;
   margin-bottom: 1rem;
@@ -274,7 +274,7 @@ body {
 }
 
 .hero h1 {
-  font-size: 1.2rem; /* Giảm xuống 1.2rem */
+  font-size: 1.2rem;
   font-weight: 800;
   display: flex;
   align-items: center;
@@ -292,7 +292,7 @@ body {
 }
 
 .hero p {
-  font-size: 0.8rem; /* Giảm xuống 0.8rem */
+  font-size: 0.8rem;
   opacity: 0.9;
   line-height: 1.5;
 }
@@ -301,7 +301,7 @@ body {
 .content-area {
   background: white;
   border-radius: 16px;
-  padding: 1rem; /* Giảm padding */
+  padding: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   width: 100% !important;
   max-width: 100% !important;
@@ -322,7 +322,7 @@ body {
 .content-area table th,
 .content-area table td {
   padding: 0.6rem;
-  font-size: 0.8rem; /* Giảm chữ trong bảng */
+  font-size: 0.8rem;
   text-align: left;
   border-bottom: 1px solid #eef2f0;
 }
@@ -344,7 +344,7 @@ body {
 }
 
 .env-section-title {
-  font-size: 1.2rem; /* Giảm xuống 1.2rem */
+  font-size: 1.2rem;
   font-weight: 800;
   color: #1a3a2a;
   margin-bottom: 1rem;
@@ -396,7 +396,7 @@ body {
 }
 
 .env-card-text {
-  font-size: 0.82rem; /* Giảm xuống 0.82rem */
+  font-size: 0.82rem;
   color: #3d5a4a;
   line-height: 1.6;
 }
@@ -467,7 +467,7 @@ body {
 }
 
 .soc-card-text {
-  font-size: 0.82rem; /* Giảm xuống 0.82rem */
+  font-size: 0.82rem;
   color: #3a5a7a;
   line-height: 1.6;
 }
@@ -560,6 +560,180 @@ body {
 }
 
 /* ============================================
+   STYLE CHO CLIMATE SMART CITY (TRONG GISAI)
+   ============================================ */
+.climate-smart-city-card {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border: 2px solid #4caf50;
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.15);
+}
+
+.climate-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1b5e20;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.climate-description {
+  font-size: 0.9rem;
+  color: #2e7d32;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.climate-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.climate-info-box {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  border-left: 5px solid #4caf50;
+}
+
+.climate-info-box h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1b5e20;
+  margin-bottom: 0.3rem;
+}
+
+.climate-info-box p {
+  font-size: 0.85rem;
+  color: #33691e;
+  line-height: 1.6;
+}
+
+.climate-sectors, .climate-features {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.climate-sectors h4, .climate-features h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1b5e20;
+  margin-bottom: 0.8rem;
+}
+
+.climate-sectors ul, .climate-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.climate-sectors ul li, .climate-features ul li {
+  font-size: 0.85rem;
+  color: #33691e;
+  line-height: 1.8;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.climate-sectors ul li::before, .climate-features ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #4caf50;
+  font-weight: 800;
+}
+
+.climate-note {
+  font-size: 0.8rem;
+  color: #558b2f;
+  font-style: italic;
+  margin-top: 0.5rem;
+  line-height: 1.6;
+}
+
+.climate-cta {
+  text-align: center;
+  margin-top: 1.2rem;
+}
+
+.btn-visit-climate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #1b4d3c, #2f7553);
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(27, 77, 60, 0.3);
+}
+
+.btn-visit-climate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(27, 77, 60, 0.4);
+  background: linear-gradient(135deg, #2f7553, #3a8f68);
+}
+
+.btn-visit-climate i {
+  font-size: 0.9rem;
+}
+
+/* Responsive cho Climate Smart City */
+@media (max-width: 768px) {
+  .climate-smart-city-card {
+    padding: 1rem;
+  }
+  
+  .climate-title {
+    font-size: 1.1rem;
+  }
+  
+  .climate-description {
+    font-size: 0.8rem;
+  }
+  
+  .climate-info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .climate-info-box {
+    padding: 0.8rem;
+  }
+  
+  .climate-info-box h4 {
+    font-size: 0.85rem;
+  }
+  
+  .climate-info-box p {
+    font-size: 0.8rem;
+  }
+  
+  .climate-sectors, .climate-features {
+    padding: 0.8rem;
+  }
+  
+  .climate-sectors ul li, .climate-features ul li {
+    font-size: 0.8rem;
+  }
+  
+  .btn-visit-climate {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================
    FOOTER NOTE
    ============================================ */
 .footer-note {
@@ -572,7 +746,7 @@ body {
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  font-size: 0.7rem; /* Giảm xuống 0.7rem */
+  font-size: 0.7rem;
   color: #5a7a62;
   line-height: 1.5;
 }

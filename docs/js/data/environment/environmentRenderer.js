@@ -16,6 +16,50 @@ function createEnvCard(card) {
   `;
 }
 
+// ===== HÀM HIỂN THỊ CLIMATE SMART CITY =====
+function renderClimateSmartCity(data) {
+  if (!data) return '';
+  
+  return `
+    <div class="climate-smart-city-card">
+      <h3 class="climate-title">${data.title}</h3>
+      <p class="climate-description">${data.description}</p>
+      
+      <div class="climate-info-grid">
+        <div class="climate-info-box">
+          <h4>🎯 Sứ mệnh</h4>
+          <p>${data.mission}</p>
+        </div>
+        <div class="climate-info-box">
+          <h4>🔭 Tầm nhìn</h4>
+          <p>${data.vision}</p>
+        </div>
+      </div>
+      
+      <div class="climate-sectors">
+        <h4>5 Lĩnh vực đánh giá chính</h4>
+        <ul>
+          ${data.sectors.map(s => `<li>${s}</li>`).join('')}
+        </ul>
+        <p class="climate-note">Mỗi tiêu chí được chuẩn hóa với công thức tính toán, thang điểm từ 1-5, giúp việc theo dõi và đánh giá trở nên khoa học và minh bạch.</p>
+      </div>
+      
+      <div class="climate-features">
+        <h4>Tính năng nổi bật</h4>
+        <ul>
+          ${data.features.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+      </div>
+      
+      <div class="climate-cta">
+        <a href="${data.externalLink}" target="_blank" rel="noopener noreferrer" class="btn-visit-climate">
+          <i class="fas fa-external-link-alt"></i> Truy cập nền tảng Climate Smart City
+        </a>
+      </div>
+    </div>
+  `;
+}
+
 function renderEnvCards(cards) {
   if (!cards || cards.length === 0) return '<p class="env-empty">Đang cập nhật nội dung...</p>';
   return `<div class="env-grid">${cards.map(card => createEnvCard(card)).join('')}</div>`;
@@ -66,9 +110,15 @@ function renderEnvironmentContent(subTab) {
     hero.className = 'hero hero-environment';
   }
   
+  // Hiển thị Climate Smart City (Chỉ ở mục GISAI)
+  const climateSection = (subTab === 'gisai' && data.climateSmartCity) 
+    ? renderClimateSmartCity(data.climateSmartCity) 
+    : '';
+  
   container.innerHTML = `
     <div class="env-section">
       <h2 class="env-section-title"><i class="fas fa-leaf"></i> ${title}</h2>
+      ${climateSection}
       ${renderEnvCards(data.cards)}
       ${data.highlight ? `
         <div class="env-highlight">

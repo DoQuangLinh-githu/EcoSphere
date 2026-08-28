@@ -4,11 +4,10 @@
   box-sizing: border-box;
 }
 
+/* ĐÃ XÓA overflow-x: hidden; */
 html,
 body {
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
 }
 
 body {
@@ -26,8 +25,7 @@ body {
   display: flex;
   min-height: 100vh;
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
+  /* ĐÃ XÓA overflow-x: hidden; */
   position: relative;
 }
 
@@ -344,7 +342,7 @@ body {
    MOBILE HEADER
    ============================================ */
 .mobile-header {
-  display: none;
+  display: none; /* Mặc định ẩn trên desktop */
   background: linear-gradient(180deg, #1b4d3c 0%, #0f2e23 100%);
   padding: 0.7rem 1rem;
   align-items: center;

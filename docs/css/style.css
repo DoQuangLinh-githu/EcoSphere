@@ -119,17 +119,6 @@ body {
   position: relative;
 }
 
-/* Đường dọc bên trái */
-.submenu::before {
-  content: '';
-  position: absolute;
-  left: 8px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 2px;
-}
 
 .nav-item.open .submenu {
   max-height: 600px;
